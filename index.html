@@ -309,7 +309,7 @@
       
       <!-- Dark Mode Toggle & CTA -->
       <div class="flex items-center space-x-4">
-        <a href="#contact" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition font-medium">Iniciar Sesión</a>
+        <a href="https://app2.desystemsoft.com" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition font-medium">Iniciar Sesión</a>
       </div>
     </div>
   </header>
@@ -787,7 +787,7 @@
                 return;
               } else if (touchScrollEndState.requireNewScroll && current < sections.length - 1) {
                 // Ya estábamos al final y es un nuevo scroll, ahora sí cambiar sección
-                showSection(current + 1, 'down');
+                showSection(current + 1, 'right'); // corrected direction
                 touchScrollEndState = { atEnd: false, direction: null, requireNewScroll: false };
                 touchLastY = e.touches[0].clientY;
                 e.preventDefault();
@@ -811,7 +811,7 @@
                 return;
               } else if (touchScrollEndState.requireNewScroll && current > 0) {
                 // Ya estábamos al inicio y es un nuevo scroll, ahora sí cambiar sección
-                showSection(current - 1, 'up');
+                showSection(current - 1, 'left'); // corrected direction
                 touchScrollEndState = { atEnd: false, direction: null, requireNewScroll: false };
                 touchLastY = e.touches[0].clientY;
                 e.preventDefault();
@@ -872,30 +872,35 @@
       });
 
     function handleGesture() {
-    const deltaX = touchendX - touchstartX;
-    const deltaY = touchendY - touchstartY;
+      const deltaX = touchendX - touchstartX;
+      const deltaY = touchendY - touchstartY;
 
-    if (Math.abs(deltaX) > Math.abs(deltaY)) {
-      if (deltaX > 50) { // Swipe Right
-        if (current > 0) {
-          showSection(current - 1, 'left');
+      if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        if (deltaX > 50) { // Swipe Right
+          if (current > 0) {
+            showSection(current - 1, 'left');
+          }
+        } else if (deltaX < -50) { // Swipe Left
+          if (current < sections.length - 1) {
+            showSection(current + 1, 'right');
+          }
         }
-      } else if (deltaX < -50) { // Swipe Left
-        if (current < sections.length - 1) {
-          showSection(current + 1, 'right');
+      } else {
+        const activeSection = sections[current];
+        const card = activeSection.querySelector('.card-effect');
+        if (card && card.scrollHeight > card.clientHeight) {
+          return;
+        }
+        if (deltaY > 50) { // Swipe Down
+          if (current > 0) {
+            showSection(current - 1, 'left');
+          }
+        } else if (deltaY < -50) { // Swipe Up
+          if (current < sections.length - 1) {
+            showSection(current + 1, 'right');
+          }
         }
       }
-    } else {
-      if (deltaY > 50) { // Swipe Down
-        if (current > 0) {
-          showSection(current - 1, 'left');
-        }
-      } else if (deltaY < -50) { // Swipe Up
-        if (current < sections.length - 1) {
-          showSection(current + 1, 'right');
-        }
-      }
-    }
     }
     });
 
