@@ -322,7 +322,7 @@
           <p class="mt-4 text-slate-600 dark:text-slate-400 max-w-xl text-justify">Ofrecemos software especializado en gestión para: Hoteles, Restaurantes, Ferreterías y pinturas, Supermercados, Inmobiliarias, Agencias de viajes, Manofactureras y otros.</p>
 
           <div class="mt-8 flex gap-4 flex-wrap">
-            <a href="#contacto" class="px-5 py-3 rounded-lg font-semibold text-white bg-indigo-600 shadow hover:opacity-95"><i class="fa-solid fa-rocket mr-2"></i>Solicitar demo</a>
+            <a href="#contact" id="solicitar-demo-hero" class="px-5 py-3 rounded-lg font-semibold text-white bg-indigo-600 shadow hover:opacity-95"><i class="fa-solid fa-rocket mr-2"></i>Solicitar demo</a>
           </div>
 
           <ul class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-slate-600 dark:text-slate-400">
@@ -840,8 +840,8 @@
         }
       });
 
-      // Top nav links
-      document.querySelectorAll('nav a').forEach(link => {
+      // Top nav links & other hero buttons
+      document.querySelectorAll('nav a, #solicitar-demo-hero').forEach(link => {
         link.addEventListener('click', (ev) => {
           ev.preventDefault();
           const href = link.getAttribute('href');
