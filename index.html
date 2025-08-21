@@ -933,16 +933,15 @@
 
       // Get form data
       const formData = {
-        nombre: document.getElementById('nombre').value.trim(),
-        email: document.getElementById('email').value.trim(),
-        telefono: document.getElementById('telefono').value.trim(),
-        institucion: document.getElementById('institucion').value.trim(),
-        fecha_solicitud: new Date().toISOString()
+        message: "Contacto - " + document.getElementById('nombre').value.trim() + ", " +
+        document.getElementById('email').value.trim() + ", " +
+        document.getElementById('telefono').value.trim() + ", " +
+        document.getElementById('institucion').value.trim()
       };
 
       try {
         // Send POST request to your backend
-        const response = await fetch('/api/solicitar-demo', {
+        const response = await fetch('http://dian.desystemsoft.com:7080/api/send-text', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
