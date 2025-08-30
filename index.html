@@ -17,12 +17,14 @@
       backdrop-filter: blur(8px);
       background: transparent;
       border: none;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: transform 0.2s, box-shadow 0.2s, opacity 0.3s;
+      opacity: 0.5;
     }
     .contact-buttons a:hover {
       transform: scale(1.12);
       box-shadow: none;
       background: transparent;
+      opacity: 1;
     }
     .contact-buttons i {
       font-size: 2.5rem;
@@ -616,7 +618,7 @@
     </div>
   </footer>
 
-  <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 contact-buttons">
+  <div id="contatMenu" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 contact-buttons">
     <a href="https://wa.me/573146886567" class="p-3 rounded-full shadow-lg flex items-center justify-center" style="background: rgba(37,211,102,0.25); border: 1.5px solid rgba(37,211,102,0.35);" target="_blank" title="WhatsApp">
       <i class="fa-brands fa-whatsapp fa-3x text-green-600"></i>
     </a>
